@@ -3,6 +3,7 @@
   "width": 500,
   "height": 400,
   "title": "World War II casualties",
+  "description": "A Bubble plot with embedded data.",
   "data": {
     "url": "https://raw.githubusercontent.com/lpl0223/FIT3179/main/WW2.csv"
   },
