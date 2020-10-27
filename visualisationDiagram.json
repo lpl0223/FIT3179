@@ -5,7 +5,7 @@
   "title": "World War II casualties",
   "description": "A Bubble plot with embedded data.",
   "data": {
-    "url": "https://raw.githubusercontent.com/lpl0223/FIT3179/main/WW2.csv"
+    "url": "https://raw.githubusercontent.com/lpl0223/FIT3179/main/WW22.csv"
   },
   "params": [
     {
@@ -129,7 +129,7 @@
         "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "datum['country'] == 'china' || datum['country'] == 'russia' || datum['country'] == 'united states' || datum['country'] == 'germany' || datum['country'] == 'Italy'|| datum['country'] == 'Japan'",
+            "test": "datum['country'] == 'China' || datum['country'] == 'Russia' || datum['country'] == 'United States of America' || datum['country'] == 'Germany' || datum['country'] == 'Italy'|| datum['country'] == 'Japan'",
             "value": 1
           },
           "value": 0
