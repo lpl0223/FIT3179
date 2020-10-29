@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Total Casualties in World War II",
+  "data": {
+    "url": "https://raw.githubusercontent.com/lpl0223/FIT3179/main/WW2.csv"
+  },
+  "transform": [
+    {"filter": "datum.civilianAndMilitaryDeaths >0"},
+    {
+      "calculate": "datum.civilianAndMilitaryDeaths * 1",
+      "as": "Total casualties"
+    }
+  ],
+  "mark": "arc",
+  "encoding": {
+    "theta": {"field": "Total casualties", "type": "quantitative"},
+    "color": {"field": "Continent", "type": "nominal"},
+    "tooltip": [
+      {"field": "country", "type": "nominal", "title": "Country"},
+      {"field": "Total casualties", "type": "quantitative", "format": ","}
+    ]
+  },
+  "view": {"stroke": null},
+  "config": {}
+}
