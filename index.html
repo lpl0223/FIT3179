@@ -15,14 +15,26 @@
  
 <h2>This is the second visualisation Update</h2>
 <div id="vis2"></div>
+  
+<h2>This is the third visualisation Update</h2>
+  <div id="vis3"></div>
 
 <script type="text/javascript">
   var specVis1 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/Interactive%20charts.json";
-  var specVis2 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/Bar%20charts.json";
-  vegaEmbed('#vis', spec).then(function(result) {
+  var specVis2 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/BarChartsI%20.json";
+  var specVis3 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/BarChartsII%20.json";
+  
+  vegaEmbed('#vis1', specVis1).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+   vegaEmbed('#vis2', specVis2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+     vegaEmbed('#vis3', specVis3).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
-
 </body>
 </html>
