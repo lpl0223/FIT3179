@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Civilian Casualties in World War II",
+  "data": {
+    "url": "https://raw.githubusercontent.com/lpl0223/FIT3179/main/WW2.csv"
+  },
+  "params": [
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "labels": [
+          "Show All",
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "name": "Continent Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.civilianAndMilitaryDeaths >0"},
+    {
+      "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+    },
+    {
+      "calculate": "datum.civilianAndMilitaryDeaths - datum.militaryDeaths",
+      "as": "civilian deaths"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "country",
+      "type": "nominal",
+      "axis": {"labelAngle": "30"},
+      "sort": "-y",
+      "title": "Country"
+    },
+    "y": {
+      "field": "civilian deaths",
+      "type": "quantitative",
+      "title": "Civilian casualties"
+    },
+    "color": {"field": "Continent"},
+    "tooltip": [
+      {"field": "country", "type": "nominal", "title": "Country"},
+      {
+        "field": "civilian deaths",
+        "type": "quantitative",
+        "format": ",",
+        "title": "Civilian casualties"
+      },
+      {"field": "Population"}
+    ]
+  },
+  "config": {}
+}
