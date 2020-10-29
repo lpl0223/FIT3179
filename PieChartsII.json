@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Each Country's Population in World War II",
+  "data": {
+    "url": "https://raw.githubusercontent.com/lpl0223/FIT3179/main/WW2.csv"
+  },
+  "transform": [
+    {"filter": "datum.Population >0"},
+    {"calculate": "datum.Population * 1", "as": "Population"}
+  ],
+  "mark": "arc",
+  "encoding": {
+    "theta": {"field": "Population", "type": "quantitative"},
+    "color": {"field": "Continent", "type": "nominal"},
+    "tooltip": [
+      {"field": "country", "type": "nominal", "title": "Country"},
+      {"field": "Population", "type": "quantitative", "format": ","}
+    ]
+  },
+  "view": {"stroke": null},
+  "config": {}
+}
