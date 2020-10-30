@@ -15,12 +15,28 @@
   
 <h2>World War II Casualties</h2>
 <div id="vis2"></div>
+  
+<h2>Military Casualties in World War II</h2>
+<div id="vis3"></div>
+  
+<h2>Civilian Casualties in World War II</h2>
+<div id="vis4"></div>
+  
+<h2>Total casualties in World War II</h2>
+<div id="vis5"></div>
+  
+<h2>Population</h2>
+<div id="vis6"></div>
  
 
 
 <script type="text/javascript">
   var specVis1 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/Map.json";
   var specVis2 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/Interactive%20charts.json";
+  var specVis3 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/BarChartsI%20.json";
+  var specVis4 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/BarChartsII.json";
+  var specVis5 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/PieChartsI.json";
+  var specVis6 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/PieChartsII.json";
   
   vegaEmbed('#vis1', specVis1).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
@@ -28,6 +44,24 @@
   
   
   vegaEmbed('#vis2', specVis2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+  vegaEmbed('#vis3', specVis3).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+  
+  vegaEmbed('#vis4', specVis4).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+  vegaEmbed('#vis5', specVis5).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+  
+  vegaEmbed('#vis6', specVis6).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
