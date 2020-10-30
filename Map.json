@@ -3,7 +3,7 @@
   "background": "white",
   "width": 800,
   "height": 400,
-  "title": {"text": "Wor;d War II Map", "frame": "group"},
+  "title": {"text": "World War II Map", "frame": "group"},
   "style": "cell",
   "data": [
     {
