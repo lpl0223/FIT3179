@@ -1,0 +1,97 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": "white",
+  "width": 800,
+  "height": 400,
+  "title": {"text": "Wor;d War II Map", "frame": "group"},
+  "style": "cell",
+  "data": [
+    {
+      "name": "source_1",
+      "url": "https://raw.githubusercontent.com/lpl0223/FIT3179/main/WW2.csv",
+      "format": {"type": "csv", "delimiter": ","}
+    },
+    {
+      "name": "source_0",
+      "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+      "format": {
+        "type": "topojson",
+        "feature": "ne_110m_admin_0_countries",
+        "parse": {}
+      },
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum[\"properties\"] && datum[\"properties\"][\"NAME\"]",
+          "as": "properties.NAME"
+        },
+        {
+          "type": "lookup",
+          "from": "source_1",
+          "key": "country",
+          "fields": ["properties.NAME"],
+          "values": ["civilianAndMilitaryDeaths", "Population"]
+        },
+        {
+          "type": "formula",
+          "expr": "datum.civilianAndMilitaryDeaths/datum.Population * 10000",
+          "as": "People deaths per 10,000 population"
+        },
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"People deaths per 10,000 population\"]) && isFinite(+datum[\"People deaths per 10,000 population\"])"
+        }
+      ]
+    }
+  ],
+  "projections": [
+    {
+      "name": "projection",
+      "size": {"signal": "[width, height]"},
+      "fit": {"signal": "data('source_0')"},
+      "type": "equirectangular"
+    }
+  ],
+  "marks": [
+    {
+      "name": "marks",
+      "type": "shape",
+      "style": ["geoshape"],
+      "from": {"data": "source_0"},
+      "encode": {
+        "update": {
+          "fill": {
+            "scale": "color",
+            "field": "People deaths per 10,000 population"
+          },
+          "tooltip": {
+            "signal": "{\"Country\": isValid(datum[\"properties.NAME\"]) ? datum[\"properties.NAME\"] : \"\"+datum[\"properties.NAME\"], \"Total casualties\": format(datum[\"civilianAndMilitaryDeaths\"], \",\"), \"People deaths per 10,000 population\": format(datum[\"People deaths per 10,000 population\"], \".2f\")}"
+          },
+          "ariaRoleDescription": {"value": "geoshape"},
+          "description": {
+            "signal": "\"Confirmed per 10,000 population: \" + (format(datum[\"Confirmed per 10,000 population\"], \"\")) + \"; Country: \" + (isValid(datum[\"properties.NAME\"]) ? datum[\"properties.NAME\"] : \"\"+datum[\"properties.NAME\"]) + \"; Confirmed Cases: \" + (format(datum[\"Confirmed\"], \",\"))"
+          }
+        }
+      },
+      "transform": [{"type": "geoshape", "projection": "projection"}]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "threshold",
+      "domain": [100, 500, 1000],
+      "range": ["#D8D8D8", "#8B8A8A", "#505050", "#2F2F2F"],
+      "interpolate": "hcl"
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "labelOverlap": "greedy",
+      "symbolType": "circle",
+      "title": "People deaths per 10,000 population"
+    }
+  ],
+  "config": {}
+}
