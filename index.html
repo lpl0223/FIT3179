@@ -10,29 +10,38 @@
 <body>
 <h1>World War II</h1>
 
-<h2>World War II Casualties</h2>
+<h2>World War II Map</h2>
 <div id="vis1"></div>
+  
+<h2>World War II Casualties</h2>
+<div id="vis2"></div>
  
 <h2>Military Casualties</h2>
-<div id="vis2"></div>
+<div id="vis3"></div>
   
 <h2>Civilian Casualties</h2>
-  <div id="vis3"></div>
+ <div id="vis4"></div>
 
 <script type="text/javascript">
-  var specVis1 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/Interactive%20charts.json";
-  var specVis2 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/BarChartsI%20.json";
-  var specVis3 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/BarChartsII.json";
+  var specVis1 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/Map.json";
+  var specVis2 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/Interactive%20charts.json";
+  var specVis3 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/BarChartsI%20.json";
+  var specVis4 = "https://raw.githubusercontent.com/lpl0223/FIT3179/main/BarChartsII.json";
   
   vegaEmbed('#vis1', specVis1).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
   
-   vegaEmbed('#vis2', specVis2).then(function(result) {
+  
+  vegaEmbed('#vis2', specVis2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
   
-     vegaEmbed('#vis3', specVis3).then(function(result) {
+   vegaEmbed('#vis3', specVis3).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+     vegaEmbed('#vis4', specVis4).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
