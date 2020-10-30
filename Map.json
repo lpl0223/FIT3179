@@ -66,11 +66,7 @@
           },
           "tooltip": {
             "signal": "{\"Country\": isValid(datum[\"properties.NAME\"]) ? datum[\"properties.NAME\"] : \"\"+datum[\"properties.NAME\"], \"Total casualties\": format(datum[\"civilianAndMilitaryDeaths\"], \",\"), \"People deaths per 10,000 population\": format(datum[\"People deaths per 10,000 population\"], \".2f\")}"
-          },
-          "ariaRoleDescription": {"value": "geoshape"},
-          "description": {
-            "signal": "\"Confirmed per 10,000 population: \" + (format(datum[\"Confirmed per 10,000 population\"], \"\")) + \"; Country: \" + (isValid(datum[\"properties.NAME\"]) ? datum[\"properties.NAME\"] : \"\"+datum[\"properties.NAME\"]) + \"; Confirmed Cases: \" + (format(datum[\"Confirmed\"], \",\"))"
-          }
+          }    
         }
       },
       "transform": [{"type": "geoshape", "projection": "projection"}]
@@ -81,7 +77,7 @@
       "name": "color",
       "type": "threshold",
       "domain": [100, 500, 1000],
-      "range": ["#D8D8D8", "#8B8A8A", "#505050", "#2F2F2F"],
+      "range": ["#E5B410", "#EE8C23", "#CA540C", "#973900"],
       "interpolate": "hcl"
     }
   ],
@@ -90,7 +86,7 @@
       "fill": "color",
       "labelOverlap": "greedy",
       "symbolType": "circle",
-      "title": "People deaths per 10,000 population"
+      "title": "Range"
     }
   ],
   "config": {}
