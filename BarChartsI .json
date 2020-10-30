@@ -32,7 +32,7 @@
     }
   ],
   "transform": [
-    {"filter": "datum.militaryDeaths >0"},
+    {"filter": "datum.civilianAndMilitaryDeaths >0"},
     {
       "filter": "Continent_selection == null || datum.Continent == Continent_selection"
     }
